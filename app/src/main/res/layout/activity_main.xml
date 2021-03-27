@@ -5,18 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="#0ba360">
+    android:background="@drawable/background_gradient">
 
     <ImageView
-        android:id="@+id/imglogo"
-        android:layout_width="384dp"
-        android:layout_height="518dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginTop="40dp"
-        android:contentDescription="TODO"
+        android:id="@+id/imageView"
+        android:layout_width="402dp"
+        android:layout_height="260dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.444"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.301"
         app:srcCompat="@mipmap/logo3r_foreground" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

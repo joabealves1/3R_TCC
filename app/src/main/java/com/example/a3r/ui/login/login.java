@@ -24,7 +24,7 @@ import android.widget.Toast;
 
 import com.example.a3r.R;
 
-public class LoginActivity extends AppCompatActivity {
+public class login extends AppCompatActivity {
 
     private LoginViewModel loginViewModel;
 
@@ -35,9 +35,9 @@ public class LoginActivity extends AppCompatActivity {
         loginViewModel = new ViewModelProvider(this, new LoginViewModelFactory())
                 .get(LoginViewModel.class);
 
-        final EditText usernameEditText = findViewById(R.id.email_cadastro);
-        final EditText passwordEditText = findViewById(R.id.senha_cadastro);
-        final Button loginButton = findViewById(R.id.login);
+        final EditText usernameEditText = findViewById(R.id.edtEmail);
+        final EditText passwordEditText = findViewById(R.id.edtSenha);
+        final Button loginButton = findViewById(R.id.btnLogin);
         final ProgressBar loadingProgressBar = findViewById(R.id.loading);
 
         loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {

@@ -5,43 +5,77 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+    android:background="@drawable/background_gradient">
 
     <TextView
         android:id="@+id/txtCadastro"
-        android:layout_width="210dp"
-        android:layout_height="53dp"
+        android:layout_width="146dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="40dp"
         android:text="Cadastro"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#EDE8E8"
         android:visibility="visible"
-        tools:layout_editor_absoluteX="98dp"
-        tools:layout_editor_absoluteY="81dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints"
         tools:visibility="visible" />
 
     <EditText
-        android:id="@+id/email_cadastro"
-        android:layout_width="214dp"
-        android:layout_height="54dp"
-        android:layout_marginTop="148dp"
-        android:hint="@string/prompt_email"
-        android:inputType="textEmailAddress"
-        android:selectAllOnFocus="true"
+        android:id="@+id/edtNome"
+        android:layout_width="320dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="40dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:selectAllOnFocus="false"
+        android:singleLine="false"
+        android:text="Nome"
+        android:textAllCaps="true"
+        android:textColor="@color/white"
+        android:textColorHighlight="#EDE8E8"
+        android:textIsSelectable="false"
+        android:typeface="normal"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtCadastro" />
+        app:layout_constraintTop_toBottomOf="@+id/txtCadastro"
+        tools:ignore="MissingConstraints"
+        tools:visibility="visible" />
+
+    <Spinner
+        android:id="@+id/spinner1"
+        android:layout_width="327dp"
+        android:layout_height="59dp"
+        android:layout_marginBottom="44dp"
+        app:layout_constraintBottom_toTopOf="@+id/edtSenhaCad"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
     <EditText
-        android:id="@+id/senha_cadastro"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_width="168dp"
-        android:layout_height="46dp"
+        android:id="@+id/edtSenhaCad"
+        android:layout_width="330dp"
+        android:layout_height="53dp"
+        android:ems="10"
         android:hint="Senha"
-        android:imeActionLabel="@string/action_sign_in_short"
-        android:imeOptions="actionDone"
         android:inputType="textPassword"
-        android:selectAllOnFocus="true"
-        tools:layout_editor_absoluteX="121dp"
-        tools:layout_editor_absoluteY="562dp" />
+        android:textColorHint="#EDE8E8"
+        tools:layout_editor_absoluteX="40dp"
+        tools:layout_editor_absoluteY="367dp" />
+
+    <EditText
+        android:id="@+id/edtConfSenha"
+        android:layout_width="330dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="25dp"
+        android:ems="10"
+        android:hint="Confirmar Senha"
+        android:inputType="textPassword"
+        android:textColorHint="#EDE8E8"
+        app:layout_constraintTop_toBottomOf="@+id/edtSenhaCad"
+        tools:layout_editor_absoluteX="40dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
