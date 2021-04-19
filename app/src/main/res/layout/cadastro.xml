@@ -11,7 +11,7 @@
         android:id="@+id/txtCadastro"
         android:layout_width="146dp"
         android:layout_height="51dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="28dp"
         android:text="Cadastro"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="#FFFFFF"
@@ -28,7 +28,7 @@
         android:id="@+id/edtNome"
         android:layout_width="320dp"
         android:layout_height="52dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="28dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:selectAllOnFocus="false"
@@ -41,19 +41,39 @@
         android:typeface="normal"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtCadastro"
         tools:ignore="MissingConstraints"
         tools:visibility="visible" />
 
+    <EditText
+        android:id="@+id/edtEmail_Cad"
+        android:layout_width="325dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="24dp"
+        android:hint="@string/prompt_email"
+        android:inputType="textEmailAddress"
+        android:selectAllOnFocus="true"
+        android:textColor="#000000"
+        android:textColorHint="#EDE8E8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtNome" />
+
     <Spinner
         android:id="@+id/spinner1"
-        android:layout_width="327dp"
-        android:layout_height="59dp"
-        android:layout_marginBottom="44dp"
+        android:layout_width="324dp"
+        android:layout_height="51dp"
+        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toTopOf="@+id/edtSenhaCad"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtEmail_Cad"
+        app:layout_constraintVertical_bias="0.756" />
 
     <EditText
         android:id="@+id/edtSenhaCad"
@@ -63,19 +83,65 @@
         android:hint="Senha"
         android:inputType="textPassword"
         android:textColorHint="#EDE8E8"
+        tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="40dp"
-        tools:layout_editor_absoluteY="367dp" />
+        tools:layout_editor_absoluteY="325dp" />
 
     <EditText
         android:id="@+id/edtConfSenha"
         android:layout_width="330dp"
         android:layout_height="53dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="Confirmar Senha"
         android:inputType="textPassword"
         android:textColorHint="#EDE8E8"
         app:layout_constraintTop_toBottomOf="@+id/edtSenhaCad"
-        tools:layout_editor_absoluteX="40dp" />
+        tools:layout_editor_absoluteX="40dp"
+        tools:ignore="MissingConstraints" />
 
+    <CheckBox
+        android:id="@+id/ckbMostrarSenha"
+        android:layout_width="330dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="20dp"
+        android:text="Mostrar Senha"
+        android:textColor="#FFFFFF"
+        android:textColorHighlight="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtConfSenha" />
+
+    <Button
+        android:id="@+id/btnRegistro"
+        android:layout_width="329dp"
+        android:layout_height="58dp"
+        android:layout_gravity="start"
+        android:layout_marginStart="48dp"
+        android:layout_marginEnd="48dp"
+        android:enabled="false"
+        android:text="Registrar"
+        android:textColor="#4CAF50"
+        app:backgroundTint="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ckbMostrarSenha"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <ProgressBar
+        android:id="@+id/progressoRegistro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="64dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.3"
+        tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>
