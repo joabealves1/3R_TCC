@@ -46,6 +46,11 @@ public class login extends AppCompatActivity {
             loadingLogin = findViewById(R.id.loadingLogin);
             ckbMostrarSenha = findViewById(R.id.ckbMostrarSenha);
 
+            mAuth = FirebaseAuth.getInstance();
+            loadingLogin = findViewById(R.id.loadingLogin);
+
+
+
 
             ckbMostrarSenha.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
@@ -65,7 +70,7 @@ public class login extends AppCompatActivity {
                 public void onClick(View v) {
                     String loginEmail = edtEmail.getText().toString();
                     String loginSenha = edtSenha.getText().toString();
-
+ 
                     if(!TextUtils.isEmpty(loginEmail) || (!TextUtils.isEmpty(loginSenha))){
                         loadingLogin.setVisibility(View.VISIBLE);
                         mAuth.signInWithEmailAndPassword(loginEmail,loginSenha)
@@ -100,6 +105,12 @@ public class login extends AppCompatActivity {
         }
 
     private void AbrirTelaPrincipal() {
+        Intent intent = new Intent(login.this, Mapas.class);
+        startActivity(intent);
+        finish();
+    }
+
+    public void Mapas(View view) {
         Intent intent = new Intent(login.this, Mapas.class);
         startActivity(intent);
         finish();

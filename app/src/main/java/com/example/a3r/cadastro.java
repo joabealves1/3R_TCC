@@ -27,6 +27,7 @@ import android.widget.Toast;
 
 public class cadastro extends AppCompatActivity {
 
+    private EditText edtNome;
     private EditText edtEmail_Cad;
     private EditText edtSenhaCad;
     private EditText edtConfSenha;
@@ -41,7 +42,9 @@ public class cadastro extends AppCompatActivity {
         setContentView(R.layout.cadastro);
 
         mAuth = FirebaseAuth.getInstance();
+        progressoRegistro = findViewById(R.id.progressoRegistro);
 
+        edtNome = findViewById(R.id.edtNome);
         edtEmail_Cad = findViewById(R.id.edtEmail_Cad);
         edtSenhaCad = findViewById(R.id.edtSenhaCad);
         edtConfSenha = findViewById(R.id.edtConfSenha);
@@ -49,44 +52,56 @@ public class cadastro extends AppCompatActivity {
         btnRegistro = findViewById(R.id.btnRegistro);
         progressoRegistro = findViewById(R.id.progressoRegistro);
 
+
+        if (mAuth.getCurrentUser() != null) {
+            startActivity(new Intent(getApplicationContext(), Mapas.class));
+            finish();
+
+        }
+
+
         ckbMostrarSenha.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked){
+                if (isChecked) {
                     edtSenhaCad.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
                     edtConfSenha.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                }else{
+                } else {
                     edtSenhaCad.setTransformationMethod(PasswordTransformationMethod.getInstance());
                     edtConfSenha.setTransformationMethod(PasswordTransformationMethod.getInstance());
                 }
 
             }
         });
-        btnRegistro.setOnClickListener(new View.OnClickListener()
-        {
+
+
+        btnRegistro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String resgistreEmail = edtEmail_Cad.getText().toString();
-                String senha = edtSenhaCad.getText().toString();
-                String confirmarSenha = edtConfSenha.getText().toString();
+                String resgistreEmail = edtEmail_Cad.getText().toString().trim();
+                String senha = edtSenhaCad.getText().toString().trim();
+                String confirmarSenha = edtConfSenha.getText().toString().trim();
 
-                if (!TextUtils.isEmpty(senha) || !TextUtils.isEmpty(senha) || !TextUtils.isEmpty(senha)){
-                    if (senha.equals(confirmarSenha)){
-                        progressoRegistro.setVisibility(View.VISIBLE);
+                if (!TextUtils.isEmpty(resgistreEmail) || !TextUtils.isEmpty(senha) || !TextUtils.isEmpty(confirmarSenha)) {
+                    if (senha.equals(confirmarSenha)) {
 
-                        mAuth.createUserWithEmailAndPassword(resgistreEmail,senha).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        progressoRegistro.setVisibility(View.VISIBLE); //registro no faribase
+
+                        mAuth.createUserWithEmailAndPassword(resgistreEmail, senha).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()){
-                                    AbrirTelaPrinciapl();
-                                }else {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(cadastro.this, "User Created", Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(getApplicationContext(), Mapas.class));
+
+                                } else {
                                     String erro = task.getException().getMessage();
-                                    Toast.makeText(cadastro.this, ""+erro, Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(cadastro.this, "Erro ! ", +Toast.LENGTH_SHORT).show();
                                 }
                                 progressoRegistro.setVisibility(View.VISIBLE);
                             }
                         });
-                    }else{
+                    } else {
                         Toast.makeText(cadastro.this, "A senha deve ser a mesma de ambos os campos!", Toast.LENGTH_SHORT).show();
                     }
                 }
@@ -95,10 +110,11 @@ public class cadastro extends AppCompatActivity {
 
 
     }
-
-    private void AbrirTelaPrinciapl() {
-        Intent intent = new Intent(cadastro.this, Mapas.class);
-        startActivity(intent);
-        finish();
-    }
 }
+
+  //  private void AbrirTelaPrinciapl() {
+  //      Intent intent = new Intent(cadastro.this, Mapas.class);
+  //      startActivity(intent);
+  //      finish();
+ //   }
+//}
